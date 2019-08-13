@@ -39,7 +39,8 @@ class LookupModule(LookupBase):
         try:
             response = open_url(url,
                                 validate_certs=validate_certs,
-                                use_proxy=use_proxy)
+                                use_proxy=use_proxy,
+                                http_agent='ansible-httpget')
             return response.read()
         except HTTPError as e:
             raise AnsibleError("Received HTTP error for %s : %s" %
